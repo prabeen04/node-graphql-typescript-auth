@@ -5,5 +5,5 @@ type User{
     lastName: String!
     email: String!
     phoneNo: String
-    dob: string
+    dob: String
 }
