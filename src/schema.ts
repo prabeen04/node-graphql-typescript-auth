@@ -11,7 +11,7 @@ export const genSchema = () => {
         .map(x => fs.readFileSync(x, { encoding: "utf8" }));
 
     const resolvers = glob
-        .sync(`${pathToModules}/**/resolver.?s`)
+        .sync(`${pathToModules}/**/*.resolver.?s`)
         .map(resolver => require(resolver).resolvers);
 
     return makeExecutableSchema({
