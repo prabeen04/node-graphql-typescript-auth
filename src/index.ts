@@ -1,7 +1,8 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
+import * as dotenv from 'dotenv';
 import {User} from "./entity/User";
-
+dotenv.config()
 createConnection().then(async connection => {
 
     console.log("Inserting a new user into the database...");
