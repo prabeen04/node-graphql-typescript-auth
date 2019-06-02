@@ -1,18 +1,27 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, BeforeInsert } from "typeorm";
+import uuid = require("uuid");
 
-@Entity()
-export class User {
+@Entity('users')
+export class User extends BaseEntity {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-    @Column()
+    @Column("varchar", { length: 255, })
     firstName: string;
 
-    @Column()
+    @Column("varchar", { length: 255 })
+    middleName: string;
+
+    @Column("varchar", { length: 255 })
     lastName: string;
 
-    @Column()
-    age: number;
+    @Column("varchar", { length: 255 })
+    email: string;
 
+    @Column("text")
+    password: string;
+
+    @Column()
+    dob: number;
 }
