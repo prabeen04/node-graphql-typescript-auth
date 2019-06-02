@@ -2,19 +2,8 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { GraphQLServer } from 'graphql-yoga'
 import * as dotenv from 'dotenv';
+import { resolvers } from './modules/user/userResolver';
 dotenv.config()
-
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: (_: any, { name }: any) => `Hello ${name || 'World'}`,
-  },
-}
 
 async function startServer() {
     try {
