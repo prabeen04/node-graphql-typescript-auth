@@ -11,6 +11,8 @@
     },
     "dependencies": {
         "dotenv": "^8.0.0",
+        "graphql-import": "^0.7.1",
+        "graphql-yoga": "^1.17.4",
         "pg": "^7.11.0",
         "reflect-metadata": "^0.1.13",
         "typeorm": "0.2.17"
