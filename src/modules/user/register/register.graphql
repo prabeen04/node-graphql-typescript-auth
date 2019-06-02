@@ -1,0 +1,11 @@
+type Mutation{
+    register(
+        firstName: String, 
+        middleName: String, 
+        lastName: String!,
+        email: String!, 
+        password: String!, 
+        dob: String,
+        phoneNo: String
+    ): Boolean
+}

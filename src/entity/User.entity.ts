@@ -22,6 +22,6 @@ export class User extends BaseEntity {
     @Column("text")
     password: string;
 
-    @Column()
-    dob: number;
+    @Column('varchar')
+    dob: string;
 }
