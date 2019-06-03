@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, BeforeInsert } from "typeorm";
 import uuid = require("uuid");
-
+import * as bcrypt from 'bcryptjs';
 @Entity('users')
 export class User extends BaseEntity {
 
@@ -24,4 +24,9 @@ export class User extends BaseEntity {
 
     @Column('varchar')
     dob: string;
+
+    @BeforeInsert()
+    async hashPassword() {
+        this.password = await bcrypt.hash(this.password, 10)
+    }
 }

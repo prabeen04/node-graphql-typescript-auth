@@ -7,3 +7,6 @@ type User{
     phoneNo: String
     dob: String
 }
+type Query{
+    hello: String
+}
