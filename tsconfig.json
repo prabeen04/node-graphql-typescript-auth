@@ -8,6 +8,7 @@
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "./build",
+      "allowSyntheticDefaultImports": false,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "sourceMap": true
