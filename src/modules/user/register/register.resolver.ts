@@ -5,8 +5,8 @@ export const resolvers: any = {
         register: async (_: any, args: any, ctx, info) => {
             console.log(args)
             const user = User.create(args)
-            user.save()
-            console.log(user)
+            const newUser = await user.save()
+            console.log(newUser)
             return false
         }
     }
