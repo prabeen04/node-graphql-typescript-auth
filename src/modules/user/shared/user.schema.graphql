@@ -1,4 +1,4 @@
-union RegisterResponse = Boolean | Error
+union RegisterResponse = User | Error
 type User{
     id: ID!
     firstName: String
