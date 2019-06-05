@@ -1,3 +1,4 @@
+import { formatYupError } from './../../../utils/formatYupErrors';
 import { User } from "../../../entity/User.entity";
 import * as yup from 'yup'
 const registerSchema = yup.object().shape({
@@ -17,16 +18,21 @@ export const resolvers: any = {
     Mutation: {
         register: async (_: any, args: GQL.IRegisterOnMutationArguments, ctx: any, info: any) => {
             try {
-                const errors = await registerSchema.validate(args)
-                console.clear()
-                console.log(errors)
-                const user = User.create(args)
-                await user.save()
-                return true
-            } catch (error) {
-                console.log(error)
-                return false
+                await registerSchema.validate(args)
+            } catch (err) {
+                console.log(err)
+                return formatYupError(err)
             }
+            const userAlreadyExists = await User.findOne({
+                where: { email: args.email },
+                select: ['id']
+            })
+            if (userAlreadyExists) return [{
+                path: 'email',
+                message: 'Email aleady exists'
+            }]
+            const user = User.create(args)
+            await user.save()
         }
     }
 }
