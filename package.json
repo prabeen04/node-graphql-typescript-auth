@@ -8,6 +8,7 @@
         "@types/glob": "^7.1.1",
         "@types/node": "^12.0.4",
         "@types/uuid": "^3.4.4",
+        "@types/yup": "^0.26.14",
         "gql2ts": "^1.10.1",
         "jest": "^24.8.0",
         "nodemon": "^1.19.1",
@@ -28,7 +29,8 @@
         "pg": "^7.11.0",
         "reflect-metadata": "^0.1.13",
         "typeorm": "0.2.17",
-        "uuid": "^3.3.2"
+        "uuid": "^3.3.2",
+        "yup": "^0.27.0"
     },
     "scripts": {
         "start": "nodemon --exec ts-node --files src/index.ts",
@@ -36,7 +38,6 @@
         "gen-schema-types": "ts-node src/scripts/createGQLTypes.ts"
     },
     "jest": {
-        "globalSetup": "./setupTest.ts",
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },

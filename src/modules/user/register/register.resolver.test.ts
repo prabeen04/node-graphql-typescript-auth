@@ -1,3 +1,5 @@
 describe('Register resolver', () => {
-    expect(1).toEqual(1)
+    test('should pass test', () => {
+        expect(1).toEqual(1)
+    })
 })
