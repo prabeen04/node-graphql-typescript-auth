@@ -7,5 +7,5 @@ type Mutation{
         password: String!, 
         dob: String,
         phoneNo: String
-    ): Boolean
+    ): RegisterResponse
 }
