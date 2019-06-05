@@ -18,6 +18,7 @@ export const resolvers: any = {
         register: async (_: any, args: GQL.IRegisterOnMutationArguments, ctx: any, info: any) => {
             try {
                 const errors = await registerSchema.validate(args)
+                console.clear()
                 console.log(errors)
                 const user = User.create(args)
                 await user.save()
