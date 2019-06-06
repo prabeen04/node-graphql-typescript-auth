@@ -1,4 +1,3 @@
-union RegisterResponse = Success | Error
 type User{
     id: ID!
     firstName: String
