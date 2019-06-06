@@ -33,7 +33,7 @@ export const resolvers: any = {
             }]
             const user = User.create(args)
             await user.save()
-            return user
+            return { status: true }
         }
     }
 }

@@ -1,4 +1,4 @@
-union RegisterResponse = User | Error
+union RegisterResponse = Success | Error
 type User{
     id: ID!
     firstName: String
@@ -11,6 +11,10 @@ type User{
 type Error {
   path: String!
   message: String!
+}
+type Success {
+  status: Boolean!
+  message: String
 }
 type Query{
     hello: String
