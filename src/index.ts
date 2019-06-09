@@ -3,11 +3,12 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { GraphQLServer } from 'graphql-yoga'
 import * as dotenv from 'dotenv';
+import { createTypeormConn } from './utils/createTypeormConn';
 dotenv.config()
 
 async function startServer() {
     try {
-        const connection = await createConnection()
+        const connection = await createTypeormConn()
         const server = new GraphQLServer({
             schema: genSchema() as any
         })
