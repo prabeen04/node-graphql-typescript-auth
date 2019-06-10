@@ -9,6 +9,7 @@ module.exports = [
         "database": process.env.POSTGRES_DATABASE,
         "synchronize": true,
         "logging": false,
+        "migrationsRun": true,
         "entities": [
             "src/entity/**/*.ts"
         ],
@@ -27,14 +28,15 @@ module.exports = [
     {
         "name": "test",
         "type": "postgres",
-        "host": process.env.POSTGRES_HOST_TEST,
+        "host": process.env.POSTGRES_HOST,
         "port": 5432,
-        "username": process.env.POSTGRES_USERNAME_TEST,
-        "password": process.env.POSTGRES_PASSWORD_TEST,
+        "username": process.env.POSTGRES_USERNAME,
+        "password": process.env.POSTGRES_PASSWORD,
         "database": process.env.POSTGRES_DATABASE_TEST,
         "synchronize": true,
-        "logging": false,
+        "logging": true,
         "dropSchema": true,
+        "migrationsRun": true,
         "entities": [
             "src/entity/**/*.ts"
         ],

@@ -31,8 +31,8 @@
         "uuid": "^3.3.2"
     },
     "scripts": {
-        "start": "nodemon --exec ts-node --files src/index.ts",
-        "test-server": "SET NODE_ENV=test nodemon --exec ts-node --files src/index.ts",
+        "start": "SET NODE_ENV=developement && nodemon --exec ts-node --files src/index.ts",
+        "test-server": "SET NODE_ENV=test && nodemon --exec ts-node --files src/index.ts",
         "test": "jest --watch",
         "gen-schema-types": "ts-node --files src/scripts/createGQLTypes.ts"
     },
