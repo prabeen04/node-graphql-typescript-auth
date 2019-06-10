@@ -26,9 +26,10 @@ export const resolvers: any = {
     Mutation: {
         login: async (_: any, args: any, ctx: any, info: any) => {
             try {
-                await loginSchema.validate(args)
+                await loginSchema.validate(args, { abortEarly: false })
             } catch (err) {
                 console.log(err)
+                console.log('yup error', formatYupError(err))
                 return formatYupError(err)
             }
 

@@ -18,7 +18,7 @@ export const resolvers: any = {
     Mutation: {
         register: async (_: any, args: GQL.IRegisterOnMutationArguments, ctx: any, info: any) => {
             try {
-                await registerSchema.validate(args)
+                await registerSchema.validate(args, { abortEarly: false })
             } catch (err) {
                 console.log(err)
                 return formatYupError(err)
