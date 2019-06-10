@@ -1,6 +1,5 @@
 import { genSchema } from './schema';
 import "reflect-metadata";
-import { createConnection } from "typeorm";
 import { GraphQLServer } from 'graphql-yoga'
 import * as dotenv from 'dotenv';
 import { createTypeormConn } from './utils/createTypeormConn';
