@@ -20,7 +20,6 @@ export const resolvers: any = {
             try {
                 await registerSchema.validate(args, { abortEarly: false })
             } catch (err) {
-                console.log(err)
                 return formatYupError(err)
             }
             const userAlreadyExists = await User.findOne({

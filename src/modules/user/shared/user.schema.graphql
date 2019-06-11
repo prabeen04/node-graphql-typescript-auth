@@ -11,10 +11,7 @@ type Error {
   path: String!
   message: String!
 }
-type Success {
-  status: Boolean!
-  message: String
-}
+
 type Query{
     hello: String
 }

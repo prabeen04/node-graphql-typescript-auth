@@ -28,8 +28,6 @@ export const resolvers: any = {
             try {
                 await loginSchema.validate(args, { abortEarly: false })
             } catch (err) {
-                console.log(err)
-                console.log('yup error', formatYupError(err))
                 return formatYupError(err)
             }
 
