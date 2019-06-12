@@ -24,7 +24,6 @@
         "graphql-import": "^0.7.1",
         "graphql-tools": "^4.0.4",
         "graphql-yoga": "^1.17.4",
-        "mandrill-api": "^1.0.45",
         "merge-graphql-schemas": "^1.5.8",
         "pg": "^7.11.0",
         "reflect-metadata": "^0.1.13",
