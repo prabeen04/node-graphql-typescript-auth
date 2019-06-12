@@ -1,6 +1,14 @@
 import * as nodemailer from 'nodemailer';
+import { MailOptions } from 'nodemailer/lib/sendmail-transport';
 
-export function sendEmail(mailOption, cb) {
+export interface IMailOption {
+    to: string;
+    from: string;
+    subject?: string;
+    text?: string;
+    html?: string | any
+}
+export function sendEmail(mailOption: MailOptions, cb: any): void {
     const transport = nodemailer.createTransport({
         service: 'gmail',
         auth: {

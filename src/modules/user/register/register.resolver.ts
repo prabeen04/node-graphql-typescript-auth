@@ -1,6 +1,8 @@
 import { formatYupError } from './../../../utils/formatYupErrors';
 import { User } from "../../../entity/User.entity";
 import * as yup from 'yup'
+import { sendEmail } from '../../../utils/SendEmail';
+import { MailOptions } from 'nodemailer/lib/sendmail-transport';
 const registerSchema = yup.object().shape({
     email: yup
         .string()
@@ -32,6 +34,16 @@ export const resolvers: any = {
             }]
             const user = User.create(args)
             await user.save()
+            const mailOption: MailOptions = {
+                to: 'prabeen22061990@gmail.com',
+                from: 'prabeen.strange@gmail.com',
+                subject: 'test11',
+                text: 'test test text',
+                html: '<h2 style="color: red;">Dunmmy html</h2>'
+            }
+            sendEmail(mailOption, (err, res) => {
+                console.log(err, res)
+            })
             return null
         }
     }
