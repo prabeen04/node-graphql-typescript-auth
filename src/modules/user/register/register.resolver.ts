@@ -58,7 +58,14 @@ export const resolvers: any = {
         },
         verifyEmail: async (_: any, args: GQL.IVerifyEmailOnMutationArguments, ctx: any, info: any) => {
             const { token } = args;
-            return false
+            jwt.verify(token, process.env.CLIENT_SECRET, (err, payload) => {
+                if (err) {
+                    console.log(err)
+                    return false
+                }
+                console.log(payload)
+            })
+            return true
         }
     }
 }
