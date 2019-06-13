@@ -8,4 +8,5 @@ type Mutation{
         dob: String,
         phoneNo: String
     ): [Error!]
+    verifyEmail(token: String!): Boolean!
 }

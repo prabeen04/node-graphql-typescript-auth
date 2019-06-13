@@ -39,6 +39,7 @@ export const resolvers: any = {
             //generate token 
             const { id, email } = user
             const token = jwt.sign({ id, email }, process.env.CLIENT_SECRET)
+            console.log(token)
             const template = `
                 <p>Click on the link below to authenticate your email</p>
                 <a target='_blank' href='http://localhost:3000/emailValidation/${token}'>
@@ -54,6 +55,10 @@ export const resolvers: any = {
                 console.log(err, res)
             })
             return null
+        },
+        verifyEmail: async (_: any, args: GQL.IVerifyEmailOnMutationArguments, ctx: any, info: any) => {
+            const { token } = args;
+            return false
         }
     }
 }
