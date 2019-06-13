@@ -1,6 +1,7 @@
 import { formatYupError } from './../../../utils/formatYupErrors';
 import { User } from "../../../entity/User.entity";
 import * as yup from 'yup'
+import * as jwt from 'jsonwebtoken'
 import { sendEmail } from '../../../utils/SendEmail';
 import { MailOptions } from 'nodemailer/lib/sendmail-transport';
 const registerSchema = yup.object().shape({
@@ -34,12 +35,20 @@ export const resolvers: any = {
             }]
             const user = User.create(args)
             await user.save()
+
+            //generate token 
+            const { id, email } = user
+            const token = jwt.sign({ id, email }, process.env.CLIENT_SECRET)
+            const template = `
+                <p>Click on the link below to authenticate your email</p>
+                <a target='_blank' href='http://localhost:3000/emailValidation/${token}'>
+                http://localhost:3000/emailValidation/${token}</a>
+                `
             const mailOption: MailOptions = {
-                to: 'prabeen22061990@gmail.com',
+                to: args.email,
                 from: 'prabeen.strange@gmail.com',
-                subject: 'test11',
-                text: 'test test text',
-                html: '<h2 style="color: red;">Dunmmy html</h2>'
+                subject: 'Confirm your mail',
+                html: template
             }
             sendEmail(mailOption, (err, res) => {
                 console.log(err, res)
