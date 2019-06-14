@@ -9,9 +9,10 @@ async function startServer() {
     try {
         const connection = await createTypeormConn()
         const server = new GraphQLServer({
-            schema: genSchema() as any
+            schema: genSchema() as any,
+            middlewares: [],
         })
-        server.start(() => console.log('Server is running on localhost:4000'))
+        server.start({ endpoint: '/graphql' }, () => console.log('Server is running on localhost:4000'))
     } catch (error) {
         console.log('Error occoured ', error)
     }
