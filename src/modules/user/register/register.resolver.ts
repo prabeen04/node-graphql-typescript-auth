@@ -1,5 +1,5 @@
+import { User } from './../../../entity/User.entity';
 import { formatYupError } from './../../../utils/formatYupErrors';
-import { User } from "../../../entity/User.entity";
 import * as yup from 'yup'
 import * as jwt from 'jsonwebtoken'
 import { sendEmail } from '../../../utils/SendEmail';
@@ -59,12 +59,15 @@ export const resolvers: any = {
         verifyEmail: async (_: any, args: GQL.IVerifyEmailOnMutationArguments, ctx: any, info: any) => {
             const { token } = args;
             console.log(token)
-            jwt.verify(token, process.env.CLIENT_SECRET, (err, payload) => {
+            jwt.verify(token, process.env.CLIENT_SECRET, async (err, { email, id }: any) => {
                 if (err) {
                     console.log(err)
                     return false
                 }
-                console.log(payload)
+                await User.findOne({ where: { email } })
+                await User.update({ id }, {
+                    confirmed: true
+                })
             })
             return true
         }
