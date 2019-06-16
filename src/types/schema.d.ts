@@ -27,9 +27,14 @@ hello: string | null;
 
 interface IMutation {
 __typename: "Mutation";
+forgotPassword: boolean;
 login: Array<IError> | null;
 register: Array<IError> | null;
 verifyEmail: boolean;
+}
+
+interface IForgotPasswordOnMutationArguments {
+email: string;
 }
 
 interface ILoginOnMutationArguments {
