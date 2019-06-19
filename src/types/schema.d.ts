@@ -62,6 +62,16 @@ path: string;
 message: string;
 }
 
+interface IMutataion {
+__typename: "Mutataion";
+changePassword: boolean;
+}
+
+interface IChangePasswordOnMutataionArguments {
+oldPassword: string;
+newPassword: string;
+}
+
 interface IUser {
 __typename: "User";
 id: string;
