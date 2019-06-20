@@ -68,6 +68,7 @@ changePassword: boolean;
 }
 
 interface IChangePasswordOnMutataionArguments {
+id: string;
 oldPassword: string;
 newPassword: string;
 }
