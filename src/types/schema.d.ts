@@ -27,10 +27,17 @@ hello: string | null;
 
 interface IMutation {
 __typename: "Mutation";
+changePassword: Array<IError> | null;
 forgotPassword: boolean;
 login: Array<IError> | null;
 register: Array<IError> | null;
 verifyEmail: boolean;
+}
+
+interface IChangePasswordOnMutationArguments {
+id: string;
+oldPassword: string;
+newPassword: string;
 }
 
 interface IForgotPasswordOnMutationArguments {
@@ -60,17 +67,6 @@ interface IError {
 __typename: "Error";
 path: string;
 message: string;
-}
-
-interface IMutataion {
-__typename: "Mutataion";
-changePassword: boolean;
-}
-
-interface IChangePasswordOnMutataionArguments {
-id: string;
-oldPassword: string;
-newPassword: string;
 }
 
 interface IUser {
